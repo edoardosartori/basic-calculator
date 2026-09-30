@@ -61,6 +61,7 @@
   });
   document.addEventListener('keydown',function(e){
     var k=e.key; if(e.metaKey||e.ctrlKey||e.altKey)return;
+    if(e.target.closest&&e.target.closest('.theme-btn'))return;
     if(k==='Escape'||k==='c'||k==='C')k='C';
     if(k==='x'||k==='X')k='*';
     if(k===','){k='.';}
@@ -72,4 +73,26 @@
     press(k);
   });
   render();
+})();
+
+(function(){
+  var themes=[['midnight','Midnight'],['emerald','Emerald'],['ember','Ember'],['silver','Silver']];
+  var btn=document.getElementById('themeBtn'), label=document.getElementById('themeName'), i=0;
+  function apply(n){
+    i=n; var t=themes[i];
+    document.documentElement.setAttribute('data-theme',t[0]);
+    label.textContent=t[1];
+    btn.setAttribute('aria-label','Change theme, current: '+t[1]);
+    try{localStorage.setItem('calc-theme',t[0]);}catch(e){}
+  }
+  function next(){apply((i+1)%themes.length);}
+  try{
+    var saved=localStorage.getItem('calc-theme');
+    for(var j=0;j<themes.length;j++) if(themes[j][0]===saved) i=j;
+  }catch(e){}
+  apply(i);
+  btn.addEventListener('click',next);
+  document.addEventListener('keydown',function(e){
+    if((e.key==='t'||e.key==='T')&&!e.metaKey&&!e.ctrlKey&&!e.altKey) next();
+  });
 })();
