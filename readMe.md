@@ -1,7 +1,5 @@
 # Exercise - Glassmorphism Calculator
 
-![screen](docs/screen.png)
-
 A dark-themed calculator with a glassmorphism card, soft ambient lighting and a keyboard-friendly interface, built with HTML, CSS and vanilla JavaScript.
 
 ## Usage
@@ -13,3 +11,11 @@ The calculator works with mouse, touch and keyboard: digits, `+ - * /`, `Enter` 
 * JavaScript
 * HTML
 * CSS
+
+
+# Screenshots
+
+![screen](docs/theme1.png)
+![screen](docs/theme2.png)
+![screen](docs/theme3.png)
+![screen](docs/theme4.png)
